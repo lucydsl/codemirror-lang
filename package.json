@@ -1,6 +1,6 @@
 {
   "name": "@lucy/codemirror-lang",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "CodeMirror 6 language support for Lucy",
   "main": "lib/lucy.js",
   "scripts": {
