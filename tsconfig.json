@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ES2020",
+    "preserveConstEnums": true,
+    "strict": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+  }

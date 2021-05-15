@@ -1,0 +1,39 @@
+{
+  "name": "@lucy/codemirror-lang",
+  "version": "1.0.0",
+  "description": "CodeMirror 6 language support for Lucy",
+  "main": "lib/lucy.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "web-dev-server --node-resolve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucydsl/codemirror-lang.git"
+  },
+  "keywords": ["lucy", "codemirror"],
+  "author": "Matthew Phillips",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lucydsl/codemirror-lang/issues"
+  },
+  "homepage": "https://github.com/lucydsl/codemirror-lang#readme",
+  "dependencies": {
+    "@codemirror/autocomplete": "^0.18.5",
+    "@codemirror/highlight": "^0.18.3",
+    "@codemirror/language": "^0.18.1",
+    "@lucy/lezer-lucy": "^0.1.2"
+  },
+  "devDependencies": {
+    "@codemirror/basic-setup": "^0.18.0",
+    "@codemirror/commands": "^0.18.2",
+    "@codemirror/state": "^0.18.7",
+    "@codemirror/view": "^0.18.12",
+    "@web/dev-server": "^0.1.17",
+    "typescript": "^4.2.4"
+  }
+}
