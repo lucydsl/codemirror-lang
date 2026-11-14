@@ -14,7 +14,7 @@ let parserWithMetadata = parser.configure({
   props: [
     styleTags({
       'initial final': t.modifier,
-      'state machine action guard': t.definitionKeyword,
+      'state machine action guard event': t.definitionKeyword,
       'use': t.definitionKeyword,
 
       Arrow: t.punctuation,
@@ -26,7 +26,8 @@ let parserWithMetadata = parser.configure({
       
       'invoke': t.keyword,
       'action guard delay assign spawn send': t.function(t.variableName),
-      Symbol: t.atom
+      Symbol: t.atom,
+      TypeName: t.typeName
     }),
     indentNodeProp.add({
       'StateBlock InvokeBlock MachineBlock': delimitedIndent({closing: "}"}),
@@ -52,6 +53,7 @@ export const lucyCompletion = lucyLanguage.data.of({
     {label: "state", type: "keyword"},
     {label: 'machine', type: 'keyword'},
     {label: 'action', type: 'keyword'},
+    {label: 'event', type: 'keyword'},
     {label: 'guard', type: 'function'},
     {label: 'delay', type: 'function'},
     {label: 'assign', type: 'function'},
