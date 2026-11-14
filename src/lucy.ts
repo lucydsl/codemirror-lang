@@ -14,10 +14,13 @@ let parserWithMetadata = parser.configure({
   props: [
     styleTags({
       'initial final': t.modifier,
-      'state machine action guard event': t.definitionKeyword,
+      // action and guard declare names; as calls they are functions, below.
+      'state machine event ActionDeclaration/action GuardDeclaration/guard': t.definitionKeyword,
       'use': t.definitionKeyword,
 
-      Arrow: t.punctuation,
+      'Arrow ImmediateArrow': t.punctuation,
+      Number: t.number,
+      LocalName: t.special(t.variableName),
       String: t.string,
       LineComment: t.lineComment,
       BlockComment: t.blockComment,
@@ -25,16 +28,16 @@ let parserWithMetadata = parser.configure({
       '{ }': t.brace,
       
       'invoke': t.keyword,
-      'action guard delay assign spawn send': t.function(t.variableName),
+      'InlineAction/action InlineGuard/guard Delay/delay InlineAssign/assign InlineSpawn/spawn InlineSend/send OnEvent/on':
+        t.function(t.variableName),
       Symbol: t.atom,
       TypeName: t.typeName
     }),
     indentNodeProp.add({
-      'StateBlock InvokeBlock MachineBlock': delimitedIndent({closing: "}"}),
-      //Application: context => context.column(context.node.from) + context.unit
+      'StateBlock InvokeBlock MachineBlock TransitionBlock UseGroup': delimitedIndent({closing: "}"}),
     }),
     foldNodeProp.add({
-      Application: foldInside
+      'StateBlock InvokeBlock MachineBlock TransitionBlock UseGroup': foldInside
     })
   ]
 })
@@ -59,7 +62,10 @@ export const lucyCompletion = lucyLanguage.data.of({
     {label: 'assign', type: 'function'},
     {label: 'spawn', type: 'function'},
     {label: 'send', type: 'function'},
-    {label: 'invoke', type: 'function'}
+    {label: 'invoke', type: 'function'},
+    {label: 'on', type: 'function'},
+    {label: 'initial', type: 'keyword'},
+    {label: 'final', type: 'keyword'}
   ]))
 });
 
