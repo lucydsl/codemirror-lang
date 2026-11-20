@@ -28,7 +28,7 @@ let parserWithMetadata = parser.configure({
       '{ }': t.brace,
       
       'invoke': t.keyword,
-      'InlineAction/action InlineGuard/guard Delay/delay InlineAssign/assign InlineSpawn/spawn InlineSend/send OnEvent/on':
+      'InlineAction/action InlineGuard/guard Delay/delay InlineAssign/assign InlineSpawn/spawn InlineSend/send InlineAppend/append InlineRemove/remove OnEvent/on':
         t.function(t.variableName),
       Symbol: t.atom,
       TypeName: t.typeName,
@@ -65,6 +65,8 @@ export const lucyCompletion = lucyLanguage.data.of({
     {label: 'assign', type: 'function'},
     {label: 'spawn', type: 'function'},
     {label: 'send', type: 'function'},
+    {label: 'append', type: 'function'},
+    {label: 'remove', type: 'function'},
     {label: 'invoke', type: 'function'},
     {label: 'on', type: 'function'},
     {label: 'initial', type: 'keyword'},
