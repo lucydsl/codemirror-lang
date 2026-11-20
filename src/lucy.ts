@@ -15,7 +15,7 @@ let parserWithMetadata = parser.configure({
     styleTags({
       'initial final': t.modifier,
       // action and guard declare names; as calls they are functions, below.
-      'state machine event ActionDeclaration/action GuardDeclaration/guard': t.definitionKeyword,
+      'state machine event input ActionDeclaration/action GuardDeclaration/guard': t.definitionKeyword,
       'use': t.definitionKeyword,
 
       'Arrow ImmediateArrow': t.punctuation,
@@ -31,13 +31,15 @@ let parserWithMetadata = parser.configure({
       'InlineAction/action InlineGuard/guard Delay/delay InlineAssign/assign InlineSpawn/spawn InlineSend/send OnEvent/on':
         t.function(t.variableName),
       Symbol: t.atom,
-      TypeName: t.typeName
+      TypeName: t.typeName,
+      // The name of an input a spawn gives, and the key in event.data or context.key.
+      PropertyName: t.propertyName
     }),
     indentNodeProp.add({
-      'StateBlock InvokeBlock MachineBlock TransitionBlock UseGroup': delimitedIndent({closing: "}"}),
+      'StateBlock InvokeBlock MachineBlock TransitionBlock SpawnBlock UseGroup': delimitedIndent({closing: "}"}),
     }),
     foldNodeProp.add({
-      'StateBlock InvokeBlock MachineBlock TransitionBlock UseGroup': foldInside
+      'StateBlock InvokeBlock MachineBlock TransitionBlock SpawnBlock UseGroup': foldInside
     })
   ]
 })
@@ -57,6 +59,7 @@ export const lucyCompletion = lucyLanguage.data.of({
     {label: 'machine', type: 'keyword'},
     {label: 'action', type: 'keyword'},
     {label: 'event', type: 'keyword'},
+    {label: 'input', type: 'keyword'},
     {label: 'guard', type: 'function'},
     {label: 'delay', type: 'function'},
     {label: 'assign', type: 'function'},
