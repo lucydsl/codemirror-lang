@@ -1,6 +1,6 @@
 {
   "name": "@lucy/codemirror-lang",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CodeMirror 6 language support for Lucy",
   "main": "lib/lucy.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "@codemirror/autocomplete": "^0.18.5",
     "@codemirror/highlight": "^0.18.3",
     "@codemirror/language": "^0.18.1",
-    "@lucy/lezer-lucy": "^0.2.0"
+    "@lucy/lezer-lucy": "^0.3.0"
   },
   "devDependencies": {
     "@codemirror/basic-setup": "^0.18.0",
